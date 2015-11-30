@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="Clinic-Scheduler" transaction-type="RESOURCE_LOCAL">
+		<class>eclipselink.entity.Appointment</class>
+		<class>eclipselink.entity.Patient</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/patient_scheduler"></property>
+			<property name="javax.persistence.jdbc.user" value="root"></property>
+			<property name="javax.persistence.jdbc.password" value="dinkle1"></property>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
+		</properties>
+	</persistence-unit>
+</persistence>
