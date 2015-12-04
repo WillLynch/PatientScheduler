@@ -1,6 +1,8 @@
 package eclipselink.entity;
 
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,17 +10,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
 
+/**
+ * CSC-370 Assignment 4
+ * Patient.java
+ * Purpose: Provides a data container for Patient entities,
+ * with JPA annotations in order to persist the data
+ *
+ * @author William Lynch
+ */
+
 @Entity
 @Table
 public class Patient {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) 	
-	
-	private int patientId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 	
+	private long patientId;
 	private String phoneNumber;
 	private String firstName;
 	private String lastName;
-	@OneToMany(targetEntity=Appointment.class)
+	@OneToMany(targetEntity=Appointment.class, cascade = CascadeType.ALL)
 	private Set<Appointment> appointments;
 	
 	public Patient(int patientId, String phoneNumber, String firstName, String lastName) {
@@ -33,7 +43,7 @@ public class Patient {
 		super();
 	}
 	
-	public int getPatientId() {
+	public long getPatientId() {
 		return this.patientId;
 	}
 	
@@ -72,6 +82,8 @@ public class Patient {
 	
 	@Override
     public String toString() {
-       return "First name:" + this.firstName + "Last Name:" + this.lastName;
+       return "First name: " + this.firstName + "\n" +
+    		   "Last Name: " + this.lastName + "\n" + 
+    		   "Phone Number: " + this.phoneNumber;
     }
 }
